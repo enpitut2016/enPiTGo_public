@@ -1,0 +1,33 @@
+<%= render 'layouts/mentor_side_menu' %>
+<div class="col-sm-9">
+  <div class="panel panel-default">
+    <div class="panel-heading">メンター出席登録</div>
+    <div class="panel-body">
+
+      <%= form_tag attend_path, method: :post do %>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th></th>
+              <th>メンター氏名</th>
+              <th>出席</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @mentors.each do |mentor| %>
+            <tr>
+              <%= fields_for "mentor[]", mentor do |m| %>
+              <td><%= m.hidden_field :id, value: mentor.id %></td>
+              <td><%= mentor.name %></td>
+              <td><%= m.check_box :attend %></td>
+              <% end %>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= submit_tag "登録", :class => "btn btn-primary btn-block" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>

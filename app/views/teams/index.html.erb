@@ -1,0 +1,26 @@
+<%= render 'layouts/mentor_side_menu' %>
+<div class="col-sm-9">
+  <div class="panel panel-default">
+    <div class="panel-heading">チーム一覧</div>
+    <div class="panel-body">
+
+      <table class="table table-hover">
+        <thead class="thead-default">
+          <tr>
+            <th>チーム名</th>
+            <th>編集ページ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @teams.each do |team| %>
+          <tr>
+            <td><%= team[:name]%></td>
+            <td><%= link_to "編集", edit_team_path(team), class:'btn btn-default' %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

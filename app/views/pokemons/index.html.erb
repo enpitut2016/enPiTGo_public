@@ -1,0 +1,12 @@
+<canvas id="pokemonCanvas" width="1000" height="1000"></canvas>
+<img id="imgSwitch" src="/images/pokemon/switch.gif" alt="switch" class="hidden">
+<script type="text/javascript">
+// Web Socketで利用する変数
+var dispatcher = new WebSocketRails("localhost:3000/websocket"); //ドメインは適宜変える
+var channel = dispatcher.subscribe("call")
+// 呼び出しフォームが利用されたときに行う処理
+channel.bind("pokemon", function(data) {
+  // バトル開始
+  startBattle(data);
+});
+</script>

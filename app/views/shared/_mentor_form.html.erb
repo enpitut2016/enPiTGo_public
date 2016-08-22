@@ -1,0 +1,11 @@
+<%= form_for @mentor do |f| %>
+  <div class="form-group">
+    <%= f.label "氏名" %>
+    <%= f.text_field :name, {:class => 'form-control'} %>
+  </div>
+  <div class="form-group">
+    <%= f.label "使用可能スキル/紹介文" %>
+    <%= f.text_area :subscription, {cols: 32, rows: 3, class: 'form-control'}  %>
+  </div>
+  <%= f.submit "登録", :class => 'btn btn-primary btn-block' %>
+<% end %>

@@ -1,0 +1,88 @@
+@charset "utf-8";
+/*--------------------------------------------------*/
+/*  base.css                                        */
+/*--------------------------------------------------*/
+
+$base_color: #f6e652
+$accent_color: #c52018
+$sub_color: #222
+$init_color: #333
+
+@font-face
+  font-family: 'PixelMplus'
+  src: url('/fonts/PixelMplus12-Regular.ttf') format('truetype')
+
+/* common */
+h1
+  margin: 0
+
+li
+  list-style: none
+
+ul, ol
+  padding-left: 0
+  list-style: none
+
+a, a:hover
+  text-decoration: none
+  color: $init_color
+
+img
+  max-width: 100%
+
+
+/* original class */
+.required label:after
+  content: "*"
+  color: $accent_color
+  margin-left: 5px
+
+.alert-notice
+  background-color: #dff0d8
+  border-color: #d6e9c6
+  color: #3c763d
+
+.alert-alert
+  background-color: #f2dede
+  border-color: #ebccd1
+  color: #a94442
+.row-eq-height
+  display: flex
+  flex-wrap: wrap
+
+/* header */
+header
+  padding: 5px 0
+  background: $sub_color
+  color: $sub_color
+
+/* message */
+#message
+  padding: 30px 0 0
+
+/* contents */
+#contents
+  padding: 0 0 30px
+
+/* footer */
+footer
+  padding: 30px 0
+  background: $sub_color
+  color: $base_color
+  text-align: center
+
+
+@media screen and (max-width: 768px)
+  h1
+    text-align: center
+
+/* only mentors */
+#pc-menu, #sp-menu
+  li.nav-sub-heading
+    padding: 10px 15px
+    background: #f5f5f5
+    border-bottom: 1px dashed #ddd
+    border-top: 1px solid #ddd
+  li.active
+    a
+      background: $base_color

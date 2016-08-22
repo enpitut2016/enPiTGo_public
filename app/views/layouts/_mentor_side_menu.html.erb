@@ -1,0 +1,44 @@
+<!-- PC用メニュー -->
+<div id="pc-menu" class="col-sm-3 hidden-xs">
+  <div class="panel panel-default">
+    <div class="panel-heading">メニュー</div>
+    <ul class="nav nav-stacked">
+      <li class="nav-sub-heading">メンター設定</li>
+      <li><%= link_to "一覧表示", mentors_path %></li>
+      <li><%= link_to "出席登録", attend_path %></li>
+      <li><%= link_to "新規登録", new_mentor_path %></li>
+      <li class="nav-sub-heading">メッセージ(お困りごと)設定</li>
+      <li><%= link_to "一覧表示", messages_path %></li>
+      <li><%= link_to "新規登録", new_message_path %></li>
+      <li class="nav-sub-heading">チーム設定</li>
+      <li><%= link_to "一覧表示", teams_path %></li>
+      <li><%= link_to "新規登録", new_team_path %></li>
+      <li class="nav-sub-heading">ログ(呼び出し履歴)表示</li>
+      <li><%= link_to "一覧表示", logs_path %></li>
+    </ul>
+  </div>
+</div>
+<!-- スマートフォン用メニュー -->
+<div id="sp-menu" class="col-sm-3 visible-xs">
+<div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading"><a data-toggle="collapse" href="#sp-nav">メニュー</a></div>
+    <div id="sp-nav" class="panel-collapse collapse">
+      <ul class="nav nav-stacked">
+        <li class="nav-sub-heading">メンター設定</li>
+        <li><%= link_to "一覧表示", mentors_path %></li>
+        <li><%= link_to "出席登録", attend_path %></li>
+        <li><%= link_to "新規登録", new_mentor_path %></li>
+        <li class="nav-sub-heading">メッセージ(お困りごと)設定</li>
+        <li><%= link_to "一覧表示", messages_path %></li>
+        <li><%= link_to "新規登録", new_message_path %></li>
+        <li class="nav-sub-heading">チーム設定</li>
+        <li><%= link_to "一覧表示", teams_path %></li>
+        <li><%= link_to "新規登録", new_team_path %></li>
+        <li class="nav-sub-heading">ログ(呼び出し履歴)表示</li>
+        <li><%= link_to "一覧表示", logs_path %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>

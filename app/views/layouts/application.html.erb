@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>enPiTGo</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
+  <script src="https://code.createjs.com/tweenjs-0.6.2.min.js"></script>
+  <script src="https://code.createjs.com/soundjs-0.6.2.min.js"></script>
+	<%= javascript_include_tag controller.controller_name, 'data-turbolinks-track' => true %>
+  <!-- <script src="assets<%= asset_path controller.controller_name %>.js"></script> -->
+	<!-- <%= asset_path controller.controller_name, type: :javascript %> -->
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag() %>
+  <meta name="viewport" content="width=device-width">
+</head>
+<body id="<%= controller.controller_name %>">
+<!-- header -->
+<%= render 'layouts/header' %>
+<!-- //header -->
+<!-- message -->
+<%= render 'layouts/message' %>
+<!-- //message-->
+<!-- contents -->
+<div id="contents">
+  <div class="container">
+    <div class="row">
+      <%= yield %>
+    </div>
+  </div>
+</div>
+<!-- //contents -->
+<!-- footer -->
+<%= render 'layouts/footer' %>
+<!-- //footer -->
+</body>
+</html>

@@ -1,0 +1,7 @@
+<%= form_for @team do |f| %>
+  <div class="form-group">
+    <%= f.label "チーム名" %>
+    <%= f.text_field :name, size: 32, class: 'form-control' %>
+  </div>
+  <%= f.submit "登録", :class => 'btn btn-primary btn-block' %>
+<% end %>

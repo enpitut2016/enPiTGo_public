@@ -1,0 +1,39 @@
+<div class="panel panel-default">
+  <div class="panel-heading">呼び出し履歴</div>
+  <div class="panel-body">
+    <!-- filter -->
+    <div id="filter">
+      <p>
+        <label for="call[team]">チーム名: </label>
+        <%= collection_select "call[team]", :id, Team.all, :id, :name, {:include_blank => "すべて"}, {:class => 'form-control', :onchange => 'filterLogs()'} %>
+      </p>
+      <p>
+        <label for="call[team]">お困りごと: </label>
+        <%= collection_select "call[message]", :id, Message.all, :id, :subscription, {:include_blank => "あらゆるお困りごと"}, {:class => 'form-control', :onchange => 'filterLogs()'} %>
+      </p>
+    </div>
+    <!-- //filter -->
+    <ul id="log-list">
+      <% @logs.each do |l| %>
+        <li class="thumbnail match" data-team="<%= l.team[:id] %>" data-message="<%= l.message[:id] %>" style="display:none">
+          <p class="log-info">
+            <%= l.team[:name]%> のまえに
+            <% if l[:level] == 1 %>温厚そうな
+            <% elsif l[:level] == 2 %>ふつうの
+            <% elsif l[:level] == 3 %>激昂した
+            <% end %>
+            <%= l.message[:subscription]%> が あらわれた！
+          </p>
+          <% if !l.mentor.nil? %>
+            <p class="mentor-info">
+              <%= l.mentor[:name]%> がかけつけた
+            </p>
+          <% end %>
+          <p class="log-date text-right">
+            <%= l[:created_at].strftime("%Y/%m/%d %H:%M") %>
+          </p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

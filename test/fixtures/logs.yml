@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  team_id: 1
+  message_id: 1
+  mentor_id: 1
+  lebel: 1
+
+two:
+  team_id: 1
+  message_id: 1
+  mentor_id: 1
+  lebel: 1

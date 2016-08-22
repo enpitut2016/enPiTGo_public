@@ -1,0 +1,28 @@
+<%= render 'layouts/mentor_side_menu' %>
+<div class="col-sm-9">
+  <div class="panel panel-default">
+    <div class="panel-heading">お困りごと一覧</div>
+    <div class="panel-body">
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>お困りごと</th>
+            <th>編集ページ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @messages.each do |message| %>
+          <tr>
+            <th scope="row"><%= message[:id] %></th>
+            <td><%= message[:subscription]%></td>
+            <td><%= link_to "編集", edit_message_path(message), {:class => 'btn btn-default'} %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

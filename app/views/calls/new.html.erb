@@ -1,0 +1,68 @@
+<!-- form -->
+<div id="call-form" class="col-md-9">
+<div class="panel panel-default">
+  <div class="panel-heading">メンター呼び出し</div>
+  <div class="panel-body">
+    <%= form_tag call_path, method: :post do %>
+      <fieldset class="form-group">
+        <label for="call[team]">チーム名</label>
+        <%= collection_select "call[team]", :id, Team.all, :id, :name, {}, {:class => 'form-control'} %>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <label for="call[team]">お困りごと</label>
+        <%= collection_select "call[message]", :id, Message.all, :id, :subscription, {}, {:class => 'form-control'} %>
+        <small class="text-muted">お困りごとがない場合は..</small>
+        <div id="new-message">
+          <label for="call[message]">お困りごとを新規登録</label>
+          <%= text_field "call[message]", :subscription, :maxlength => 256, :size => 32,  :class => 'form-control' %>
+          <a class="btn btn-default" role="button" onClick="createNewMessage()">登録</a>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <label for="call[level]"><%= "ふんいき" %></label>
+        <p id="level-item">
+        <input id="level-slider"type="text" name="call[level][value]" data-provide="slider" data-slider-ticks="[1,2,3]" data-slider-ticks-labels='["ちょっときて", "やばいかも", "緊急事態発生"]' data-slider-min="1" data-slider-max="3" data-slider-step="1" data-slider-value="2" data-slider-tooltip="hide">
+        </p>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <label for="call[mentor]"><%= "メンターの指定" %></label>
+        <input type="hidden" name="call[mentor][id]" class="form-control" value="">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a id="collapse-btn" data-toggle="collapse" data-target="#mentor-list">メンターを指定する</a>
+          </div>
+          <div id="mentor-list" class="panel-collapse collapse">
+            <ul id="mentors" class="row row-eq-height">
+              <% @mentors.each do |m| %>
+                <li class="col-sm-6 col-md-4 col-lg-3" data-mentor-id="<%= m.id %>">
+                  <div class="thumbnail">
+
+										<% if File.exist? "#{Rails.root}/public/images/mentor/#{m.id.to_s}.png" %>
+                      <p class="mentor-image"><%= image_tag "/images/mentor/#{m.id.to_s}.png" %></p>
+                    <% else %>
+                      <p class="mentor-image"><%= image_tag "/images/mentor/mentor_default.png" %></p>
+                    <% end %>
+                    <p class="mentor-name"><%= m.name %></p>
+                    <p class="mentor-description"><%= !m.subscription.blank? ? m.subscription : "" %></p>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </fieldset>
+
+      <%= submit_tag "送信", :class => 'btn btn-success btn-block btn-lg' %>
+    <% end %>
+  </div>
+</div>
+</div>
+<!-- //form -->
+<!-- logs -->
+<div class="col-md-3">
+  <%= render 'layouts/log' %>
+</div>
+<!-- //logs -->

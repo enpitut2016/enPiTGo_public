@@ -1,0 +1,10 @@
+<div id="message">
+  <div class="container">
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, class: "alert alert-#{key}") do %>
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <p><%= value %></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>

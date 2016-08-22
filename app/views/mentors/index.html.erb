@@ -1,0 +1,30 @@
+<%= render 'layouts/mentor_side_menu' %>
+<div class="col-sm-9">
+  <div class="panel panel-default">
+    <div class="panel-heading">メンター一覧</div>
+    <div class="panel-body">
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>メンター氏名</th>
+            <th>紹介文</th>
+            <th>編集ページ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @mentors.each do |mentor| %>
+          <tr>
+            <th scope="row"><%= mentor[:id]%></th>
+            <td><%= mentor[:name]%></td>
+            <td><%= mentor[:subscription]%></td>
+            <td><%= link_to "編集", edit_mentor_path(mentor), { :class => "btn btn-default"} %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
