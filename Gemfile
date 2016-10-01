@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
 
+ruby '2.3.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', group: :development
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -44,16 +45,10 @@ gem 'bootstrap-slider-rails'
 # deploy用
 gem 'dotenv-rails' #環境変数を簡単に扱うのに使用
 
-group :development, :test do
-  gem 'capistrano'
-  gem 'capistrano-rails'
-  gem 'capistrano-rbenv'
-  gem 'capistrano-bundler'
-  gem 'capistrano3-unicorn' #Unicornの起動を簡単に行える
-end
-
-group :production, :staging do
+group :production do
   gem 'unicorn'
+  gem 'rails_12factor'
+  gem 'pg'
 end
 
 group :development, :test do
