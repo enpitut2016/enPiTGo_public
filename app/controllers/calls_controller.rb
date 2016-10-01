@@ -26,7 +26,7 @@ class CallsController < ApplicationController
     end
     @log.save
     slack_message = make_slack_message(@log)
-    Slack.chat_postMessage(text: slack_message, username: 'enPiTGo', channel: "#develop")
+    Slack.chat_postMessage(text: slack_message, username: ENV['SLACK_USERNAME'], channel: ENV['SLACK_CHANNEL'])
 
 		# プッシュ通知用のJSON生成
 		@mentors = Mentor.select(:id, :name).where(attend: true)
